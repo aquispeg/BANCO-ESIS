@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-struct cliente{
+struct cuenta{
     string nombre;
     int DNI, edad, ncuenta;
 };
@@ -12,9 +12,9 @@ int main(){
     int op, n, ncuenta;
     string SN,nom;
     int DNI,edad;
-    cliente cli;
-    cliente ctot[50];
-    cliente ctotpre[50];
+    cuenta cta;
+    cuenta ctot[50];
+    cuenta ctotpre[50];
 
 
 
@@ -46,7 +46,7 @@ int main(){
                 else{
                 srand(time(0));
                 ctot[i].ncuenta=rand();
-                ctot[i].ncuenta=(rand()%9999)+1;
+                ctot[i].ncuenta=(rand()%9999)+1000;
 
                 cout<<"Su numero de cuenta es:"<<endl<<"1234-5678-9012-"<<ctot[i].ncuenta<<endl;
 
