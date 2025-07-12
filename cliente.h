@@ -7,6 +7,7 @@ struct cliente{
     string nombre;
     string DNI;
     int edad;
+    string contrasena;
 };
 cliente registrarCliente();
 void mostrarCliente(const cliente &c);

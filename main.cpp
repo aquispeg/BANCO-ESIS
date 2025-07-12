@@ -25,7 +25,14 @@ int main (){
             break;
             case 2:
             if(cuentaCreada){
-                mostrarCliente(cte);
+                string contraIngresada;
+                cout<<"ingrese su contraseña: "<<endl;
+                getline(cin, contraIngresada);
+                if(contraIngresada == cte.contrasena){
+                    mostrarCliente(cte);
+                }else{
+                    cout<<"contraseña incorrecta. acceso denegado"<<endl;
+                }
             }else{
                 cout<<"Debe Crear una cuenta. "<< endl;
             }

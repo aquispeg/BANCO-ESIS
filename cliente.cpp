@@ -15,6 +15,9 @@ cliente registrarCliente(){
     cin>>c.edad;
     cin.ignore();
 
+    cout<<"ingrese contrasena: ";
+    getline(cin, c.contrasena);
+
     return c;
 }
 
