@@ -3,9 +3,10 @@
 
 using namespace std;
 int main (){
+    cliente lista[50];
+    int totcliente=0;
     int op;
     string SN;
-    cliente cte;
     bool cuentaCreada=false;
     do{
         system("cls");
@@ -16,31 +17,49 @@ int main (){
         cout<<" 0. Salir"<<endl;
         cout<<"Elige Una Opcion: ";cin>>op;
         cin.ignore();
+
         switch(op){
             case 1:
-            cte = registrarCliente();
-            cuentaCreada=true;
-            cout<<"cuenta creada correctamente"<< endl;
-            system("pause");
-            break;
-            case 2:
-            if(cuentaCreada){
-                string contraIngresada;
+                if(totcliente <50){
+                    lista[totcliente]=registrarCliente();
+                    totcliente=totcliente+1;
+                    cout<<"cuenta creada correctamente"<< endl;
+                }else {
+                    cout<<"limite de cuentas alcanzadas"<<endl;
+                }
+                system("pause");
+                break;
+            case 2: {
+                if(totcliente==0){
+                    cout<<"No hay cuentas regitradas."<<endl;
+                    system("pause");
+                    break;
+                }
+            
+                string contraIngresada,dniBuscado;
+                cout<<"ingrese su DNI: "<<endl;
+                getline(cin, dniBuscado);
                 cout<<"ingrese su contraseña: "<<endl;
                 getline(cin, contraIngresada);
-                if(contraIngresada == cte.contrasena){
-                    mostrarCliente(cte);
-                }else{
-                    cout<<"contraseña incorrecta. acceso denegado"<<endl;
+            
+                bool encontrado=false;
+                for(int i=0;i<totcliente;i++){
+                    if(lista[i].DNI==dniBuscado && lista[i].contrasena == contraIngresada){
+                        mostrarCliente(lista[i]);
+                        encontrado=true;
+                        break;
+                    }
                 }
-            }else{
-                cout<<"Debe Crear una cuenta. "<< endl;
+                if(!encontrado){
+                    cout<<"DNI o contraseña incorrecta. "<<endl;
+                    cout<<"---acceso denegado---"<<endl;
+                }
+                system("pause");
+                break;
             }
-            system("pause");
-            break;
             case 0:
                 cout<<"¿Esta Seguro de Salir? (S/N): ";
-                cin>>SN;
+                getline(cin, SN);
                 if (SN=="N" || SN=="s"){
                     op=op+1;
                 }
@@ -50,8 +69,7 @@ int main (){
                 system("pause");
                 break;
         } 
-    }
-    while (op!=0);
+    } while (op!=0);
     
     return 0;
 }
