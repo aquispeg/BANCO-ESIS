@@ -1,16 +1,12 @@
 #include <iostream>
+#include "cliente.h"
+
 using namespace std;
-struct cliente{
-    string nombre;
-    int DNI;
-    int edad;
-};
-int main(){
+int main (){
     int op;
     string SN;
-    string nom;
-    int DNI,edad;
-    cliente cte, lista[50];
+    cliente cte;
+    bool cuentaCreada=false;
     do{
         system("cls");
         cout<<":::::::::::::BANCO ESIS:::::::::::::"<<endl;
@@ -19,15 +15,26 @@ int main(){
         cout<<" 2. Iniciar Sesion"<<endl;
         cout<<" 0. Salir"<<endl;
         cout<<"Elige Una Opcion: ";cin>>op;
+        cin.ignore();
         switch(op){
             case 1:
+            cte = registrarCliente();
+            cuentaCreada=true;
+            cout<<"cuenta creada correctamente"<< endl;
+            system("pause");
             break;
             case 2:
+            if(cuentaCreada){
+                mostrarCliente(cte);
+            }else{
+                cout<<"Debe Crear una cuenta. "<< endl;
+            }
+            system("pause");
             break;
             case 0:
                 cout<<"¿Esta Seguro de Salir? (S/N): ";
                 cin>>SN;
-                if (SN=="N" || SN=="n"){
+                if (SN=="N" || SN=="s"){
                     op=op+1;
                 }
                 break;
@@ -38,4 +45,6 @@ int main(){
         } 
     }
     while (op!=0);
+    
+    return 0;
 }
