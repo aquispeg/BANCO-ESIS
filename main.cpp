@@ -11,11 +11,11 @@ int main (){
     do{
         system("cls");
         cout<<":::::::::::::BANCO ESIS:::::::::::::"<<endl;
-        cout<<"---Menu de opciones-----------------"<<endl;
-        cout<<" 1. Crear Cuenta"<<endl;
-        cout<<" 2. Iniciar Sesion"<<endl;
+        cout<<"----------Menu de opciones----------"<<endl;
+        cout<<" 1. Crear cuenta"<<endl;
+        cout<<" 2. Iniciar sesion"<<endl;
         cout<<" 0. Salir"<<endl;
-        cout<<"Elige Una Opcion: ";cin>>op;
+        cout<<"Elige una opcion: ";cin>>op;
         cin.ignore();
 
         switch(op){
@@ -23,9 +23,9 @@ int main (){
                 if(totcliente <50){
                     lista[totcliente]=registrarCliente();
                     totcliente=totcliente+1;
-                    cout<<"cuenta creada correctamente"<< endl;
+                    cout<<"Cuenta creada correctamente."<< endl;
                 }else {
-                    cout<<"limite de cuentas alcanzadas"<<endl;
+                    cout<<"Limite de cuentas alcanzado."<<endl;
                 }
                 system("pause");
                 break;
@@ -37,9 +37,9 @@ int main (){
                 }
             
                 string contraIngresada,dniBuscado;
-                cout<<"ingrese su DNI: "<<endl;
+                cout<<"Ingrese su DNI: "<<endl;
                 getline(cin, dniBuscado);
-                cout<<"ingrese su contraseña: "<<endl;
+                cout<<"Ingrese su contrasena: "<<endl;
                 getline(cin, contraIngresada);
             
                 bool encontrado=false;
@@ -51,16 +51,16 @@ int main (){
                     }
                 }
                 if(!encontrado){
-                    cout<<"DNI o contraseña incorrecta. "<<endl;
-                    cout<<"---acceso denegado---"<<endl;
+                    cout<<"DNI o contrasena incorrecta. "<<endl;
+                    cout<<"---Acceso denegado---"<<endl;
                 }
                 system("pause");
                 break;
             }
             case 0:
-                cout<<"¿Esta Seguro de Salir? (S/N): ";
+                cout<<"Esta seguro de salir? (S/N): ";
                 getline(cin, SN);
-                if (SN=="N" || SN=="s"){
+                if (SN=="N" || SN=="n"){
                     op=op+1;
                 }
                 break;
