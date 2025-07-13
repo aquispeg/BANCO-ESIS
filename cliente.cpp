@@ -5,24 +5,24 @@ using namespace std;
 
 cliente registrarCliente(){
     cliente c;
-    cout<<"Ingrese Nombre: ";
+    cout<<"Ingrese nombre: ";
     getline(cin, c.nombre);
 
-    cout<<"ingrese DNI: ";
+    cout<<"Ingrese DNI: ";
     getline(cin, c.DNI);
     
-    cout<<"ingrese edad: ";
+    cout<<"Ingrese edad: ";
     cin>>c.edad;
     cin.ignore();
 
-    cout<<"ingrese contrasena: ";
+    cout<<"Ingrese contrasena: ";
     getline(cin, c.contrasena);
 
     return c;
 }
 
 void mostrarCliente(const cliente &c){
-    cout<<"===Datos del cliente==="<<endl;
+    cout<<"\n===Datos del cliente==="<<endl;
     cout<<"Nombre: "<<c.nombre<<endl;
     cout<<"DNI: "<<c.DNI<<endl;
     cout<<"Edad: "<<c.edad<<endl;
