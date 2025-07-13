@@ -22,7 +22,7 @@ cliente registrarCliente(){
 }
 
 void mostrarCliente(const cliente &c){
-    cout<<"===Datos del cliente==="<<endl;
+    cout<<"\n===Datos del cliente==="<<endl;
     cout<<"Nombre: "<<c.nombre<<endl;
     cout<<"DNI: "<<c.DNI<<endl;
     cout<<"Edad: "<<c.edad<<endl;

@@ -46,6 +46,7 @@ int main (){
             
                 bool encontrado=false;
                 int i;
+                int j;
                 for(i=0; i<totcliente; i++){
                     if(lista[i].DNI==dniBuscado && lista[i].contrasena == contraIngresada){
                         mostrarCliente(lista[i]);
@@ -69,7 +70,7 @@ int main (){
                         cout<<"5. Consultar saldo"<<endl;
                         cout<<"6. Mostrar perfil"<<endl;
                         cout<<"0. Cerrar sesion"<<endl;
-                        cin>>subop;
+                        cout<<"Elige una opcion: "; cin>>subop;
                         cin.ignore();
 
                         switch(subop){
@@ -79,7 +80,7 @@ int main (){
                             case 2:
                                 break;
                             case 3:
-                                cout<<"Ingrese el numero de cuenta al cual depositar: "; cin>>numeroCuenta;
+                                cout<<"Ingrese el numero de cuenta al cual depositar: "; cin>>numeroCuenta;                                
                                 break;
                             case 4:
                                 cout<<"Ingrese el numero de cuenta del cual retirar: "; cin>>numeroCuenta;
@@ -88,6 +89,8 @@ int main (){
                                 cout<<"Ingrese el numero de la cuenta: "; cin>>numeroCuenta;
                                 break;
                             case 6:
+                                mostrarCliente(lista[i]);
+                                system("pause");
                                 break;
                             case 0:
                                 cout<<"Esta seguro de salir? (S/N): ";
