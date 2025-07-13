@@ -37,13 +37,13 @@ int main (){
                     system("pause");
                     break;
                 }
-            
+
                 string contraIngresada,dniBuscado;
                 cout<<"Ingrese su DNI: "<<endl;
                 getline(cin, dniBuscado);
                 cout<<"Ingrese su contrasena: "<<endl;
                 getline(cin, contraIngresada);
-            
+
                 bool encontrado=false;
                 int i;
                 int j;
@@ -74,13 +74,18 @@ int main (){
                         cin.ignore();
 
                         switch(subop){
-                            int index;
-                            case 1:
-                                break;
-                            case 2:
-                                break;
+                            case 1:{
+                            int ncbase;
+                            crearc_bancaria(cuentas, totCuentas, lista[i].DNI);
+                            system("pause");
+                                break;}
+
+                            case 2:{
+                            mostrarc_bancaria(cuentas, totCuentas, lista[i].DNI);
+                            system("pause");
+                                break;}
                             case 3:
-                                cout<<"Ingrese el numero de cuenta al cual depositar: "; cin>>numeroCuenta;                                
+                                cout<<"Ingrese el numero de cuenta al cual depositar: "; cin>>numeroCuenta;
                                 break;
                             case 4:
                                 cout<<"Ingrese el numero de cuenta del cual retirar: "; cin>>numeroCuenta;
@@ -120,8 +125,8 @@ int main (){
                 cout<<"Opcion no valida!"<<endl;
                 system("pause");
                 break;
-        } 
+        }
     } while (op!=0);
-    
+
     return 0;
 }
