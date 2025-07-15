@@ -42,7 +42,7 @@ int main (){
                     system("pause");
                     break;
                 }
-
+            
                 cout<<"Ingrese su DNI: "<<endl;
                 getline(cin, dniBuscado);
                 cout<<"Ingrese su contrasena: "<<endl;
@@ -76,11 +76,11 @@ int main (){
                         cin.ignore();
                         int index;
                         switch(subop){
-                            case 1:
+                            case 1:{
                             int ncbase;
                             crearc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
-                                break;
+                                break;}
 
                             case 2:
                             mostrarc_bancaria(cuentas, totCuentas, clientes[i].DNI);
@@ -149,6 +149,5 @@ int main (){
                 break;
             }
     } while (op!=0);
-
     return 0;
 }
