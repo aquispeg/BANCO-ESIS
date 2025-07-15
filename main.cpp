@@ -1,15 +1,19 @@
 #include <iostream>
 #include "cliente.h"
 #include "operaciones.h"
+#include "cuenta.h"
 
 using namespace std;
 int main (){
-    cliente lista[50];
+    cliente clientes[50];
     cuenta cuentas[50];
     int totcliente=0;
-    int op, subop, numeroCuenta;
+    int totCuentas=0;
+    int op, subop;
     string SN;
+    string contraIngresada,dniBuscado;
     bool cuentaCreada=false;
+    bool encontrado;
     do{
         system("cls");
         cout<<":::::::::::::BANCO ESIS:::::::::::::"<<endl;
@@ -23,33 +27,31 @@ int main (){
         switch(op){
             case 1:
                 if(totcliente <50){
-                    lista[totcliente]=registrarCliente();
+                    clientes[totcliente]=registrarCliente();
                     totcliente=totcliente+1;
-                    cout<<"Cuenta creada correctamente."<< endl;
+                    cout<<"Cuenta creada correctamente."<< endl << endl;
                 }else {
-                    cout<<"Limite de cuentas alcanzado."<<endl;
+                    cout<<"Limite de cuentas alcanzado."<<endl << endl;
                 }
                 system("pause");
                 break;
-            case 2: {
+            case 2:
+                encontrado = false;
                 if(totcliente==0){
                     cout<<"No hay cuentas regitradas."<<endl;
                     system("pause");
                     break;
                 }
-
-                string contraIngresada,dniBuscado;
+            
                 cout<<"Ingrese su DNI: "<<endl;
                 getline(cin, dniBuscado);
                 cout<<"Ingrese su contrasena: "<<endl;
                 getline(cin, contraIngresada);
 
-                bool encontrado=false;
                 int i;
-                int j;
                 for(i=0; i<totcliente; i++){
-                    if(lista[i].DNI==dniBuscado && lista[i].contrasena == contraIngresada){
-                        mostrarCliente(lista[i]);
+                    if(clientes[i].DNI==dniBuscado && clientes[i].contrasena == contraIngresada){
+                        mostrarCliente(clientes[i]);
                         encontrado=true;
                         break;
                     }
@@ -62,7 +64,7 @@ int main (){
                     do{
                         system("cls");
                         cout<<"==== MENU DE USUARIO ==="<<endl;
-                        cout<<"Bienvenido(a) "<< lista[i].nombre<<endl;
+                        cout<<"Bienvenido(a) "<< clientes[i].nombre<<endl;
                         cout<<"1. Crear cuenta bancaria"<<endl;
                         cout<<"2. Ver cuentas"<<endl;
                         cout<<"3. Depositar"<<endl;
@@ -72,29 +74,50 @@ int main (){
                         cout<<"0. Cerrar sesion"<<endl;
                         cout<<"Elige una opcion: "; cin>>subop;
                         cin.ignore();
-
+                        int index;
                         switch(subop){
                             case 1:{
                             int ncbase;
-                            crearc_bancaria(cuentas, totCuentas, lista[i].DNI);
+                            crearc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
                                 break;}
 
-                            case 2:{
-                            mostrarc_bancaria(cuentas, totCuentas, lista[i].DNI);
+                            case 2:
+                            mostrarc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
-                                break;}
-                            case 3:
-                                cout<<"Ingrese el numero de cuenta al cual depositar: "; cin>>numeroCuenta;
                                 break;
-                            case 4:
-                                cout<<"Ingrese el numero de cuenta del cual retirar: "; cin>>numeroCuenta;
+                            case 3:{
+                                int numeroCuenta;
+                                cout<<"Ingrese el numero de cuenta al cual depositar: ";
+                                cin>>numeroCuenta;
+                                index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
+                                if (index != -1){
+                                    depositar(cuentas[index]);
+                                }
                                 break;
-                            case 5:
-                                cout<<"Ingrese el numero de la cuenta: "; cin>>numeroCuenta;
+                            }
+                            case 4:{
+                                int numeroCuenta;
+                                cout<<"Ingrese el numero de cuenta del cual retirar: ";
+                                cin>>numeroCuenta;
+                                index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
+                                if (index != -1){
+                                    retirar(cuentas[index]);
+                                }
                                 break;
+                            }
+                            case 5:{
+                                int numeroCuenta;
+                                cout<<"Ingrese el numero de la cuenta: ";
+                                cin>>numeroCuenta;
+                                index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
+                                if (index != -1){
+                                    saldoActual(cuentas[index]);
+                                } 
+                                break;
+                            }
                             case 6:
-                                mostrarCliente(lista[i]);
+                                mostrarCliente(clientes[i]);
                                 system("pause");
                                 break;
                             case 0:
@@ -102,8 +125,8 @@ int main (){
                                 cin.ignore();
                                 getline(cin, SN);
                                 if (SN=="N" || SN=="n"){
-                                    subop=subop+1;
-                                }
+                                    subop = -1;
+                                }                              
                                 break;
                             default:
                                 cout<<"Opcion no valida!"<<endl;
@@ -112,8 +135,7 @@ int main (){
                     } while(subop != 0);
                 }
                 system("pause");
-                break;
-            }
+                break;            
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";
                 getline(cin, SN);
@@ -125,8 +147,7 @@ int main (){
                 cout<<"Opcion no valida!"<<endl;
                 system("pause");
                 break;
-        }
+            }
     } while (op!=0);
-
     return 0;
 }
