@@ -9,11 +9,11 @@ int main (){
     cuenta cuentas[50];
     int totcliente=0;
     int totCuentas=0;
-    int op, subop, numeroCuenta;
+    int op, subop;
     string SN;
     string contraIngresada,dniBuscado;
     bool cuentaCreada=false;
-    bool encontrado=false;
+    bool encontrado;
     do{
         system("cls");
         cout<<":::::::::::::BANCO ESIS:::::::::::::"<<endl;
@@ -36,6 +36,7 @@ int main (){
                 system("pause");
                 break;
             case 2:
+                encontrado = false;
                 if(totcliente==0){
                     cout<<"No hay cuentas regitradas."<<endl;
                     system("pause");
@@ -85,7 +86,8 @@ int main (){
                             mostrarc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
                                 break;
-                            case 3:
+                            case 3:{
+                                int numeroCuenta;
                                 cout<<"Ingrese el numero de cuenta al cual depositar: ";
                                 cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
@@ -93,7 +95,9 @@ int main (){
                                     depositar(cuentas[index]);
                                 }
                                 break;
-                            case 4:
+                            }
+                            case 4:{
+                                int numeroCuenta;
                                 cout<<"Ingrese el numero de cuenta del cual retirar: ";
                                 cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
@@ -101,7 +105,9 @@ int main (){
                                     retirar(cuentas[index]);
                                 }
                                 break;
-                            case 5:
+                            }
+                            case 5:{
+                                int numeroCuenta;
                                 cout<<"Ingrese el numero de la cuenta: ";
                                 cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
@@ -109,6 +115,7 @@ int main (){
                                     saldoActual(cuentas[index]);
                                 } 
                                 break;
+                            }
                             case 6:
                                 mostrarCliente(clientes[i]);
                                 system("pause");
@@ -118,9 +125,8 @@ int main (){
                                 cin.ignore();
                                 getline(cin, SN);
                                 if (SN=="N" || SN=="n"){
-                                    subop=subop+1;
-                                }
-                                encontrado = false;                                
+                                    subop = -1;
+                                }                              
                                 break;
                             default:
                                 cout<<"Opcion no valida!"<<endl;
