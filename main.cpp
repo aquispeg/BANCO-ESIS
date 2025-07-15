@@ -11,7 +11,7 @@ int main (){
     int totCuentas=0;
     int op, subop;
     string SN;
-    string contraIngresada,dniBuscado;
+    string contraIngresada,dniBuscado,numeroCuenta;
     bool cuentaCreada=false;
     bool encontrado;
     do{
@@ -42,7 +42,7 @@ int main (){
                     system("pause");
                     break;
                 }
-            
+
                 cout<<"Ingrese su DNI: "<<endl;
                 getline(cin, dniBuscado);
                 cout<<"Ingrese su contrasena: "<<endl;
@@ -77,7 +77,6 @@ int main (){
                         int index;
                         switch(subop){
                             case 1:{
-                            int ncbase;
                             crearc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
                                 break;}
@@ -87,9 +86,9 @@ int main (){
                             system("pause");
                                 break;
                             case 3:{
-                                int numeroCuenta;
+                                cin.ignore();
                                 cout<<"Ingrese el numero de cuenta al cual depositar: ";
-                                cin>>numeroCuenta;
+                                getline(cin, numeroCuenta);
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     depositar(cuentas[index]);
@@ -97,9 +96,9 @@ int main (){
                                 break;
                             }
                             case 4:{
-                                int numeroCuenta;
+                                cin.ignore();
                                 cout<<"Ingrese el numero de cuenta del cual retirar: ";
-                                cin>>numeroCuenta;
+                                getline(cin,numeroCuenta);
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     retirar(cuentas[index]);
@@ -107,13 +106,13 @@ int main (){
                                 break;
                             }
                             case 5:{
-                                int numeroCuenta;
+                                cin.ignore();
                                 cout<<"Ingrese el numero de la cuenta: ";
-                                cin>>numeroCuenta;
+                                getline(cin,numeroCuenta);
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     saldoActual(cuentas[index]);
-                                } 
+                                }
                                 break;
                             }
                             case 6:
@@ -126,7 +125,7 @@ int main (){
                                 getline(cin, SN);
                                 if (SN=="N" || SN=="n"){
                                     subop = -1;
-                                }                              
+                                }
                                 break;
                             default:
                                 cout<<"Opcion no valida!"<<endl;
@@ -135,7 +134,7 @@ int main (){
                     } while(subop != 0);
                 }
                 system("pause");
-                break;            
+                break;
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";
                 getline(cin, SN);
