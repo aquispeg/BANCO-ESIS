@@ -82,9 +82,14 @@ int main (){
                                 break;}
 
                             case 2:
+                            if(totCuentas==0){
+                            cout<<"No hay cuentas asociadas a "<<clientes[i].nombre<<endl;
+                            break;
+                            }
+                            else{
                             mostrarc_bancaria(cuentas, totCuentas, clientes[i].DNI);
                             system("pause");
-                                break;
+                                break;}
                             case 3:{
                                 cin.ignore();
                                 cout<<"Ingrese el numero de cuenta al cual depositar: ";
