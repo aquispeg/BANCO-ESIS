@@ -6,12 +6,12 @@
 using namespace std;
 
 struct cuenta{
-    int ncuenta;
     float saldo;
-    string DNI;
+    string DNI, ncuenta;
+
 };
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI);
 void mostrarc_bancaria(cuenta cuentas[], int totCuentas, string DNI);
-int buscarCuenta(cuenta cuentas[], int totCuentas, int numeroCuenta, string DNI);
+int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string DNI);
 #endif

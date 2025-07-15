@@ -1,12 +1,18 @@
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 #include "cuenta.h"
 
 using namespace std;
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
+    srand(time(0));
+    int nrandom=(rand()%99)+10;
+    string ncuenta="5400-1234-5678-";
+    ncuenta+=to_string(nrandom);
     cuentas[totCuentas].DNI = DNI;
-    cuentas[totCuentas].ncuenta = 1000 + totCuentas;
+    cuentas[totCuentas].ncuenta=ncuenta;
     cuentas[totCuentas].saldo = 0;
     cout << "Cuenta bancaria creada correctamente." << endl;
     cout << "Numero de la nueva cuenta: " << cuentas[totCuentas].ncuenta << endl;
@@ -24,7 +30,7 @@ void mostrarc_bancaria(cuenta cuentas[], int totCuentas, string DNI) {
     }
 }
 
-int buscarCuenta(cuenta cuentas[], int totCuentas, int numeroCuenta, string DNI) {
+int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string DNI) {
     for (int i = 0; i < totCuentas; i++) {
         if (cuentas[i].ncuenta == numeroCuenta && cuentas[i].DNI == DNI) {
             return i;
