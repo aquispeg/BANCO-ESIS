@@ -3,16 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include "cuenta.h"
 using namespace std;
 
-struct cuenta{
-    int ncuenta;
-    float saldo;
-    string DNI;
-};
-
-void depositar(cuenta &, float);
-void retirar(cuenta &, float);
+void depositar(cuenta &);
+void retirar(cuenta &);
 void saldoActual(cuenta &);
 
 #endif
