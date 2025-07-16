@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "cliente.h"
 using namespace std;
 
 struct cuenta {
@@ -12,6 +13,6 @@ struct cuenta {
 };
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI);
-void mostrarc_bancaria(cuenta cuentas[], int totCuentas, string DNI);
+void mostrarc_bancaria(cuenta cuentas[], cliente clientes[], int totCuentas, string DNI);
 int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string DNI);
 #endif

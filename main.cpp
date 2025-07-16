@@ -72,7 +72,7 @@ int main (){
                     if(clientes[i].DNI==dniBuscado && clientes[i].contrasena == contraIngresada){
                         system("cls");
                         cout<<"\n\033[32mBienvenido(a) " << clientes[i].nombre << "\033[0m\n";
-                        mostrarCliente(clientes[i]);                       
+                        mostrarCliente(clientes[i]);
                         encontrado=true;
                         system("pause");
                         break;
@@ -84,7 +84,7 @@ int main (){
                     cout<<"\n------Acceso denegado------\033[0m\n";
                     system("pause");
                 } else {
-                    do{                        
+                    do{
                         system("cls");
                         cout<<"\n\033[34m======= MENU DE USUARIO ======\033[36m\n";
                         cout<<" 1. Crear cuenta bancaria\n";
@@ -108,12 +108,12 @@ int main (){
                                 if(totalCuentas==0){
                                     cout<<"\n\033[36mNo hay cuentas asociadas a \033[0m"<<clientes[i].nombre<<endl;
                                 } else {
-                                    mostrarc_bancaria(cuentas, totalCuentas, clientes[i].DNI);
+                                    mostrarc_bancaria(cuentas, clientes, totalCuentas, clientes[i].DNI);
                                     }
                                 break;
                             }
 
-                            case 3:{                                                               
+                            case 3:{
                                 cout << "\033[36mIngrese el numero de cuenta al cual depositar: \033[0m";
                                 cin >> numeroCuenta;
                                 index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
@@ -165,7 +165,7 @@ int main (){
                                 break;
                         }
                         system("pause");
-                        
+
                     } while(subop != 0);
                 }
                 break;
