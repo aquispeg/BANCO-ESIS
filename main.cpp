@@ -111,6 +111,7 @@ int main (){
                             }
 
                             case 4:{
+
                                 cout << "\033[36mIngrese el numero de cuenta del cual retirar: \033[0m";
                                 cin >> numeroCuenta;
                                 index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
