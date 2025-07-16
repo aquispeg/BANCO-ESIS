@@ -25,7 +25,7 @@ bool esContrasenaValido (const string &password) {
 bool cuentaExistente(cliente clientes[], int &totClientes){
     for (int i = 0; i < totClientes; i++){
         if (clientes[i].DNI == clientes[totClientes].DNI) {
-           return true; 
+           return true;
         }
     }
     totClientes++;

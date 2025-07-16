@@ -1,6 +1,5 @@
 #include <iostream>
 #include "cliente.h"
-#include "operaciones.h"
 #include "cuenta.h"
 
 using namespace std;
@@ -93,6 +92,7 @@ int main (){
                         cout<<" 4. Retirar\n";
                         cout<<" 5. Consultar saldo\n";
                         cout<<" 6. Mostrar perfil\n";
+                        cout<<" 7. Mostrar historial\n";
                         cout<<" 0. Cerrar sesion\n";
                         cout<<"\033[34m================================\n";
                         cout<<"\033[36mElige una opcion: \033[0m"; cin>>subop;
@@ -146,6 +146,16 @@ int main (){
 
                             case 6:{
                                 mostrarCliente(clientes[i]);
+                                break;
+                            }
+
+                            case 7:{
+                                cout << "\033[36mIngrese el numero de la cuenta: \033[0m";
+                                cin >> numeroCuenta;
+                                index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
+                                if (index != -1){
+                                    mostrarHistorial(cuentas[index]);
+                                }                                
                                 break;
                             }
 
