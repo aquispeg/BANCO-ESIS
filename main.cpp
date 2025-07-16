@@ -91,9 +91,8 @@ int main (){
                             system("pause");
                                 break;}
                             case 3:{
-                                cin.ignore();
                                 cout<<"Ingrese el numero de cuenta al cual depositar: ";
-                                getline(cin, numeroCuenta);
+                                cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     depositar(cuentas[index]);
@@ -101,9 +100,8 @@ int main (){
                                 break;
                             }
                             case 4:{
-                                cin.ignore();
                                 cout<<"Ingrese el numero de cuenta del cual retirar: ";
-                                getline(cin,numeroCuenta);
+                                cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     retirar(cuentas[index]);
@@ -111,9 +109,8 @@ int main (){
                                 break;
                             }
                             case 5:{
-                                cin.ignore();
                                 cout<<"Ingrese el numero de la cuenta: ";
-                                getline(cin,numeroCuenta);
+                                cin>>numeroCuenta;
                                 index = buscarCuenta(cuentas, totCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
                                     saldoActual(cuentas[index]);
