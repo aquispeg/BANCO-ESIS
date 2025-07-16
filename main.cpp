@@ -18,12 +18,13 @@ int main (){
 
     do{
         system("cls");
-        cout<<":::::::::::::BANCO ESIS:::::::::::::"<<endl;
-        cout<<"----------Menu de opciones----------"<<endl;
-        cout<<" 1. Crear cuenta"<<endl;
-        cout<<" 2. Iniciar sesion"<<endl;
-        cout<<" 0. Salir"<<endl;
-        cout<<"Elige una opcion: "; cin>>op;
+        cout<<"\n\033[34m============= BANCO ESIS =============\033[36m\n";
+        cout<<"---------- Menu de opciones ----------\n";
+        cout<<" 1. Crear cuenta\n";
+        cout<<" 2. Iniciar sesion\n";
+        cout<<" 0. Salir\n";
+        cout<<"\033[34m======================================\n";
+        cout<<"\033[36mElige una opcion: \033[0m"; cin>>op;
         cin.ignore();
 
         switch (op) {
@@ -31,9 +32,9 @@ int main (){
                 if ( totalClientes < 50 ) {
                     clientes[totalClientes] = registrarCliente();
                     totalClientes++;
-                    cout<<"\nCuenta creada correctamente.\n";
+                    cout<<"\n\033[32mCuenta creada correctamente.\033[0m\n";
                 } else {
-                    cout<<"\nLimite de cuentas alcanzado.\n";
+                    cout<<"\n\033[31mLimite de cuentas alcanzado.\033[0m\n";
                 }
                 system("pause");
                 break;
@@ -43,7 +44,7 @@ int main (){
                 encontrado = false;
 
                 if(totalClientes == 0){
-                    cout<<"No hay cuentas regitradas."<<endl;
+                    cout<<"\033[31mNo hay cuentas regitradas.\033[0m"<<endl;
                     system("pause");
                     break;
                 }
@@ -57,22 +58,22 @@ int main (){
                 for(i=0; i<totalClientes; i++){
                     if(clientes[i].DNI==dniBuscado && clientes[i].contrasena == contraIngresada){
                         system("cls");
-                        cout<<"\nBienvenido(a) " << clientes[i].nombre << "\n";
-                        mostrarCliente(clientes[i]);
-                        system("pause");
+                        cout<<"\n\033[32mBienvenido(a) " << clientes[i].nombre << "\033[0m\n";
+                        mostrarCliente(clientes[i]);                       
                         encontrado=true;
+                        system("pause");
                         break;
                     }
                 }
 
                 if(!encontrado){
-                    cout<<"\nDNI o contrasena incorrecta.";
-                    cout<<"\n---Acceso denegado---\n";
+                    cout<<"\n\033[31mDNI o contrasena incorrecta.";
+                    cout<<"\n------Acceso denegado------\033[0m\n";
                     system("pause");
                 } else {
-                    do{
+                    do{                        
                         system("cls");
-                        cout<<"\n======= MENU DE USUARIO ======\n";
+                        cout<<"\n\033[34m======= MENU DE USUARIO ======\033[36m\n";
                         cout<<" 1. Crear cuenta bancaria\n";
                         cout<<" 2. Ver cuentas\n";
                         cout<<" 3. Depositar\n";
@@ -80,29 +81,27 @@ int main (){
                         cout<<" 5. Consultar saldo\n";
                         cout<<" 6. Mostrar perfil\n";
                         cout<<" 0. Cerrar sesion\n";
-                        cout<<"================================";
-                        cout<<"Elige una opcion: "; cin>>subop;
+                        cout<<"\033[34m================================\n";
+                        cout<<"\033[36mElige una opcion: \033[0m"; cin>>subop;
 
                         int index;
                         switch(subop){
                             case 1:{
                                 crearc_bancaria(cuentas, totalCuentas, clientes[i].DNI);
-                                system("pause");
-                                    break;
+                                break;
                             }
 
                             case 2:{
                                 if(totalCuentas==0){
-                                    cout<<"No hay cuentas asociadas a "<<clientes[i].nombre<<endl;
+                                    cout<<"\n\033[36mNo hay cuentas asociadas a \033[0m"<<clientes[i].nombre<<endl;
                                 } else {
                                     mostrarc_bancaria(cuentas, totalCuentas, clientes[i].DNI);
-                                    system("pause");
                                     }
                                 break;
                             }
 
                             case 3:{                                                               
-                                cout<<"Ingrese el numero de cuenta al cual depositar: ";
+                                cout << "\033[36mIngrese el numero de cuenta al cual depositar: \033[0m";
                                 cin >> numeroCuenta;
                                 index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
@@ -112,7 +111,7 @@ int main (){
                             }
 
                             case 4:{
-                                cout << "Ingrese el numero de cuenta del cual retirar: ";
+                                cout << "\033[36mIngrese el numero de cuenta del cual retirar: \033[0m";
                                 cin >> numeroCuenta;
                                 index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
@@ -122,7 +121,7 @@ int main (){
                             }
 
                             case 5:{
-                                cout << "Ingrese el numero de la cuenta: ";
+                                cout << "\033[36mIngrese el numero de la cuenta: \033[0m";
                                 cin >> numeroCuenta;
                                 index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
                                 if (index != -1){
@@ -133,12 +132,11 @@ int main (){
 
                             case 6:{
                                 mostrarCliente(clientes[i]);
-                                system("pause");
                                 break;
                             }
 
                             case 0:{
-                                cout<<"Esta seguro de salir? (S/N): ";
+                                cout<<"\033[36mEsta seguro de salir? (S/N): \033[0m";
                                 cin.ignore();
                                 getline(cin, SN);
                                 if (SN=="N" || SN=="n"){
@@ -148,20 +146,19 @@ int main (){
                             }
 
                             default:
-                                cout << "Opcion no valida!\n";
+                                cout << "\033[31mError: Opcion no valida\033[0m\n";
                                 system("pause");
                                 break;
                         }
-
+                        system("pause");
+                        
                     } while(subop != 0);
                 }
-
-                system("pause");
                 break;
             }
 
             case 0:{
-                cout << "Esta seguro de salir? (S/N): ";
+                cout<<"\033[36mEsta seguro de salir? (S/N): \033[0m";
                 getline(cin, SN);
                 if (SN=="N" || SN=="n"){
                     op=op+1;
@@ -170,7 +167,7 @@ int main (){
             }
 
             default:{
-                cout << "Opcion no valida!\n";
+                cout << "\033[31mError: Opcion no valida\033[0m\n";
                 system("pause");
                 break;
             }

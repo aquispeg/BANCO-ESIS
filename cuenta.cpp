@@ -14,18 +14,18 @@ void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
     cuentas[totCuentas].DNI = DNI;
     cuentas[totCuentas].ncuenta=ncuenta;
     cuentas[totCuentas].saldo = 0;
-    cout << "Cuenta bancaria creada correctamente." << endl;
-    cout << "Numero de la nueva cuenta: " << cuentas[totCuentas].ncuenta << endl;
+    cout << "\033[32m\nCuenta bancaria creada correctamente.\n\033[0m";
+    cout << "\033[36mNumero de la nueva cuenta: \033[0m" << cuentas[totCuentas].ncuenta << endl;
     totCuentas++;
 }
 
 void mostrarc_bancaria(cuenta cuentas[], int totCuentas, string DNI) {
-    cout << "---------Cuentas Bancarias--------" << endl << endl;
+    cout << "\033[34m\n---------Cuentas Bancarias--------\033[36m" << endl << endl;
     for (int i = 0; i < totCuentas; i++) {
         if (cuentas[i].DNI == DNI) {
-            cout << "Numero de cuenta: " << cuentas[i].ncuenta << endl;
-            cout << "Saldo: S/" << cuentas[i].saldo << endl;
-            cout << "----------------------------------" << endl;
+            cout << "\033[36mNumero de cuenta: \033[0m" << cuentas[i].ncuenta << endl;
+            cout << "\033[36mSaldo: \033[0mS/" << cuentas[i].saldo << endl;
+            cout << "\033[34m----------------------------------\033[0m" << endl;
         }
     }
 }
@@ -36,7 +36,6 @@ int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string D
             return i;
         }
     }
-    cout << "Error: Cuenta no encontrada."<<endl<<endl;
-    system("pause");
+    cout << "\033[31mError: Cuenta no encontrada.\033[0m"<<endl<<endl;
     return -1;
 }
