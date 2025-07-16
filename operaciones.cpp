@@ -1,39 +1,37 @@
 #include <iostream>
 #include <string>
 #include "operaciones.h"
+
 using namespace std;
 
-void depositar(cuenta &cuenta) {
+void depositar (cuenta &cuenta) {
     float monto;
-    cout<<"\nIngrese el monto a depositar (Max. 1000): "; cin>>monto;
+    cout<<"\n\033[36mIngrese el monto a depositar (Max. 1000): \033[0m"; cin >> monto;
     cin.ignore();
-    if(monto > 0 && monto <= 1000){
+    if (monto > 0 && monto <= 1000) {
         cuenta.saldo += monto;
-        cout<<"Deposito exitoso. Nuevo saldo: "<<cuenta.saldo<<endl<<endl;        
+        cout<<"\033[32mDeposito exitoso.\033[0m Nuevo saldo: "<<cuenta.saldo<<endl<<endl;        
     }
-    else{
-        cout<<"Error: Monto invalido."<<endl<<endl;
-    }
-    system("pause");
+    else {
+        cout<<"\033[31mError: Monto invalido.\033[0m"<<endl<<endl;
+    };
 }
 
-void retirar(cuenta &cuenta){
+void retirar (cuenta &cuenta) {
     float monto;
-    cout<<"\nIngrese el monto a retirar: "; cin>>monto;
-    if(monto <= 0){
-        cout<<"Error: Monto invalido."<<endl;
+    cout<<"\n\033[36mIngrese el monto a retirar: \033[0m"; cin>>monto;
+    if (monto <= 0) {
+        cout<<"\033[31mError: Monto invalido.\033[0m"<<endl;
     } 
-    else if(monto > cuenta.saldo){
-        cout<<"Fondos insuficientes. Saldo actual: "<<cuenta.saldo<<endl<<endl;
+    else if (monto > cuenta.saldo) {
+        cout<<"\033[31mFondos insuficientes.\033[0m Saldo actual: "<<cuenta.saldo<<endl<<endl;
     } 
-    else{
+    else {
         cuenta.saldo -= monto;
-        cout<<"Retiro exitoso. Saldo actual: "<<cuenta.saldo<<endl<<endl;
-    }
-    system("pause");
+        cout<<"\033[32mRetiro exitoso.\033[0m Saldo actual: "<<cuenta.saldo<<endl<<endl;
+    };
 }
 
-void saldoActual(cuenta &cuenta){
-    cout<<"Saldo actual: "<<cuenta.saldo<<endl;
-    system("pause");
+void saldoActual (cuenta &cuenta) {
+    cout << "Saldo actual: " << cuenta.saldo << "\n";
 }
