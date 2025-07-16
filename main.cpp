@@ -31,8 +31,11 @@ int main (){
             case 1: {
                 if ( totalClientes < 50 ) {
                     clientes[totalClientes] = registrarCliente();
-                    totalClientes++;
+                    if(cuentaExistente(clientes, totalClientes)){
+                        cout<<"\033[31mError: Cuenta ya existente.\033[0m\n";
+                    } else {
                     cout<<"\n\033[32mCuenta creada correctamente.\033[0m\n";
+                    }
                 } else {
                     cout<<"\n\033[31mLimite de cuentas alcanzado.\033[0m\n";
                 }
@@ -44,15 +47,25 @@ int main (){
                 encontrado = false;
 
                 if(totalClientes == 0){
-                    cout<<"\033[31mNo hay cuentas regitradas.\033[0m"<<endl;
+                    cout<<"\033[31mNo hay cuentas registradas.\033[0m"<<endl;
                     system("pause");
                     break;
                 }
 
-                cout<<"\nIngrese su DNI: ";
-                getline(cin, dniBuscado);
-                cout<<"Ingrese su contrasena: ";
-                getline(cin, contraIngresada);
+                do {
+                    cout<<"Ingrese su DNI: ";
+                    getline(cin, dniBuscado);
+                    if (!esDniValido(dniBuscado)){
+                    cout << "Error: DNI invalido. Debe tener exactamente 8 digitos numericos.\n"; 
+                    }
+                } while (!esDniValido(dniBuscado));
+                do {
+                    cout<<"Ingrese su contrasena: ";    
+                    getline(cin, contraIngresada);
+                    if (!esContrasenaValido(contraIngresada)){
+                        cout<<"Error: Contrasena invalida. Debe tener de 4 a 10 digitos.\n";
+                    }
+                } while (!esContrasenaValido(contraIngresada));
 
                 int i;
                 for(i=0; i<totalClientes; i++){
