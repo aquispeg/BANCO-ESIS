@@ -1,9 +1,9 @@
 #include "cliente.h"
 #include <iostream>
+
 using namespace std;
 
-
-cliente registrarCliente(){
+cliente registrarCliente() {
     cliente c;
     cout<<"Ingrese nombre: ";
     getline(cin, c.nombre);
@@ -21,8 +21,8 @@ cliente registrarCliente(){
     return c;
 }
 
-void mostrarCliente(const cliente &c){
-    cout<<"\n===Datos del cliente==="<<endl;
+void mostrarCliente(const cliente &c) {
+    cout<<"\n===Datos del cliente===\n";
     cout<<"Nombre: "<<c.nombre<<endl;
     cout<<"DNI: "<<c.DNI<<endl;
     cout<<"Edad: "<<c.edad<<endl;

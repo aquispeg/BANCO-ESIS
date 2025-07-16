@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-struct cuenta{
+struct cuenta {
     float saldo;
     string DNI, ncuenta;
 

@@ -36,7 +36,7 @@ int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string D
             return i;
         }
     }
-    cout<<"Error: Cuenta no encontrada."<<endl<<endl;
+    cout << "Error: Cuenta no encontrada."<<endl<<endl;
     system("pause");
     return -1;
 }
