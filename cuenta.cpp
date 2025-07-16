@@ -3,12 +3,13 @@
 #include <ctime>
 #include <cstdlib>
 #include "cuenta.h"
+#include "cliente.h"
 
 using namespace std;
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
     srand(time(0));
-    int nrandom=(rand()%90)+10;
+    int nrandom=(rand()%9900)+1000;
     string ncuenta="5400-1234-5678-";
     ncuenta+=to_string(nrandom);
     cuentas[totCuentas].DNI = DNI;
@@ -19,13 +20,29 @@ void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
     totCuentas++;
 }
 
-void mostrarc_bancaria(cuenta cuentas[], int totCuentas, string DNI) {
-    cout << "\033[34m\n---------Cuentas Bancarias--------\033[36m" << endl << endl;
+void mostrarc_bancaria(cuenta cuentas[], cliente clientes[] ,int totCuentas, string DNI) {
+int inom;
+    time_t tiempo = time(0);
+    char horayfecha[80];
+    strftime(horayfecha, 80, "%d/%m/%Y %H:%M:%S", localtime(&tiempo));
+
+    for(int i=0;i<totCuentas;i++){
+    if(clientes[i].DNI==DNI){
+        inom=i;
+    }
+    }
+
+    cout<<"\033[34m\n----------------------------------------------------------------------\033[0m"<<endl;
+    cout<<"\033[36m\t\t\t      BANCO ESIS\033[0m"<<endl;
+    cout<<"\033[34m----------------------------------------------------------------------\033[0m"<<endl;
+    cout<<"\t\t\t\t\t\t"<<horayfecha<<endl;
+    cout<<"\033[93m  Usuario: \033[0m"<<clientes[inom].nombre<<"\t\t"<<endl;
+    cout<<"\033[34m----------------------------------------------------------------------\033[0m"<<endl;
     for (int i = 0; i < totCuentas; i++) {
         if (cuentas[i].DNI == DNI) {
-            cout << "\033[36mNumero de cuenta: \033[0m" << cuentas[i].ncuenta << endl;
-            cout << "\033[36mSaldo: \033[0mS/" << cuentas[i].saldo << endl;
-            cout << "\033[34m----------------------------------\033[0m" << endl;
+            cout<<"\033[36m  Numero de cuenta: \033[0m"<<cuentas[i].ncuenta << endl;
+            cout<<"\033[32m  Saldo:\033[0m S/"<<cuentas[i].saldo<<"\t"<<endl;
+            cout<<"\033[34m----------------------------------------------------------------------\033[0m"<<endl;
         }
     }
 }
