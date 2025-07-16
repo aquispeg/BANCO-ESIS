@@ -12,6 +12,7 @@ struct cliente{
     string contrasena;
 };
 
+bool esDniValido(const string &);
 cliente registrarCliente();
 void mostrarCliente(const cliente &c);
 

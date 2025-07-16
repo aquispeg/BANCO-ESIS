@@ -1,15 +1,33 @@
 #include "cliente.h"
 #include <iostream>
+#include <cctype>
 
 using namespace std;
+
+bool esDniValido (const string &dni){
+    if (dni.length() != 8){
+        return false;
+    }
+    for (char c : dni){
+        if (!isdigit(c))
+            return false;
+    }
+    return true;
+}
 
 cliente registrarCliente() {
     cliente c;
     cout<<"\nIngrese nombre: ";
     getline(cin, c.nombre);
 
-    cout<<"Ingrese DNI: ";
-    getline(cin, c.DNI);
+    do {
+        cout<<"Ingrese DNI: ";
+        getline(cin, c.DNI);
+        if (!esDniValido(c.DNI)){
+        cout << "Error: DNI invalido. Debe tener exactamente 8 digitos numericos.\n"; 
+        }
+
+    } while (!esDniValido(c.DNI));
     
     cout<<"Ingrese edad: ";
     cin>>c.edad;
