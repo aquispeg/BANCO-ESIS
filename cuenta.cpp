@@ -8,7 +8,7 @@ using namespace std;
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
     srand(time(0));
-    int nrandom=(rand()%99)+10;
+    int nrandom=(rand()%90)+10;
     string ncuenta="5400-1234-5678-";
     ncuenta+=to_string(nrandom);
     cuentas[totCuentas].DNI = DNI;
