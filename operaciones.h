@@ -6,10 +6,10 @@
 
 using namespace std;
 
-void depositar(cuenta &);
-void retirar(cuenta &);
-void saldoActual(cuenta &);
-void mostrarHistorial(const cuenta &);
+void depositar(cuenta [], int, string, string);
+void retirar(cuenta [], int, string, string);
+void saldoActual(cuenta [], int, string, string);
+void mostrarHistorial(cuenta [], int, string, string);
 string obtenerFechaActual();
 
 #endif

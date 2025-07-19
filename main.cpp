@@ -122,42 +122,22 @@ int main (){
                             }
 
                             case 2:{
-                                if(totalCuentas==0){
-                                    cout<<"\n\033[36mNo hay cuentas asociadas a \033[0m"<<clientes[i].nombre<<endl;
-                                } else {
-                                    mostrarc_bancaria(cuentas, clientes, totalCuentas, clientes[i].DNI);
-                                    }
+                                 mostrarc_bancaria(cuentas, clientes, totalCuentas, i);
                                 break;
                             }
 
-                            case 3:{
-                                cout << "\033[36mIngrese el numero de cuenta al cual depositar: \033[0m";
-                                cin >> numeroCuenta;
-                                index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
-                                if (index != -1){
-                                    depositar(cuentas[index]);
-                                }
+                            case 3:{                                
+                                depositar(cuentas, totalCuentas, dniBuscado, clientes[i].nombre);
                                 break;
                             }
 
                             case 4:{
-
-                                cout << "\033[36mIngrese el numero de cuenta del cual retirar: \033[0m";
-                                cin >> numeroCuenta;
-                                index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
-                                if (index != -1){
-                                    retirar(cuentas[index]);
-                                }
+                                retirar(cuentas, totalCuentas, dniBuscado, clientes[i].nombre);
                                 break;
                             }
 
                             case 5:{
-                                cout << "\033[36mIngrese el numero de la cuenta: \033[0m";
-                                cin >> numeroCuenta;
-                                index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
-                                if (index != -1){
-                                    saldoActual(cuentas[index]);
-                                }
+                                saldoActual(cuentas, totalCuentas, dniBuscado, clientes[i].nombre);
                                 break;
                             }
 
@@ -167,12 +147,7 @@ int main (){
                             }
 
                             case 7:{
-                                cout << "\033[36mIngrese el numero de la cuenta: \033[0m";
-                                cin >> numeroCuenta;
-                                index = buscarCuenta(cuentas, totalCuentas, numeroCuenta, dniBuscado);
-                                if (index != -1){
-                                    mostrarHistorial(cuentas[index]);
-                                }                                
+                                mostrarHistorial(cuentas, totalCuentas, dniBuscado, clientes[i].nombre);
                                 break;
                             }
 

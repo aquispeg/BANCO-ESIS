@@ -20,6 +20,6 @@ struct cuenta {
 };
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI);
-void mostrarc_bancaria(cuenta cuentas[], cliente clientes[], int totCuentas, string DNI);
+void mostrarc_bancaria(cuenta cuentas[], cliente clientes[], int totCuentas, int i);
 int buscarCuenta(cuenta cuentas[], int totCuentas, string numeroCuenta, string DNI);
 #endif

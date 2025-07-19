@@ -32,14 +32,20 @@ void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
     totCuentas++;
 }
 
-void mostrarc_bancaria(cuenta cuentas[], cliente clientes[] ,int totCuentas, string DNI) {
-int inom;
+void mostrarc_bancaria(cuenta cuentas[], cliente clientes[] ,int totCuentas, int index) {
+    int inom;
+    
+    if(totCuentas==0){
+        cout<<"\n\033[36mNo hay cuentas asociadas a \033[0m"<<clientes[index].nombre<<endl;
+        return;
+    }
+
     time_t tiempo = time(0);
     char horayfecha[80];
     strftime(horayfecha, 80, "%d/%m/%Y %H:%M:%S", localtime(&tiempo));
 
     for(int i=0;i<totCuentas;i++){
-        if(clientes[i].DNI==DNI){
+        if(clientes[i].DNI==clientes[index].DNI){
             inom=i;
         }
     }
@@ -51,7 +57,7 @@ int inom;
     cout<<"\033[93m  Usuario: \033[0m"<<clientes[inom].nombre<<"\t\t"<<endl;
     cout<<"\033[34m----------------------------------------------------------------------\033[0m"<<endl;
     for (int i = 0; i < totCuentas; i++) {
-        if (cuentas[i].DNI == DNI) {
+        if (cuentas[i].DNI == clientes[index].DNI) {
             cout<<"\033[36m  Numero de cuenta: \033[0m"<<cuentas[i].ncuenta << endl;
             cout<<"\033[32m  Saldo:\033[0m S/"<<cuentas[i].saldo<<"\t"<<endl;
             cout<<"\033[34m----------------------------------------------------------------------\033[0m"<<endl;
