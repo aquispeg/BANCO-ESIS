@@ -44,9 +44,14 @@ cliente registrarCliente() {
         cout << "\033[31mError: DNI invalido. Debe tener exactamente 8 digitos numericos.\033[0m\n"; 
         }
     } while (!esDniValido(c.DNI));
-    
-    cout<<"\033[36mIngrese edad: \033[0m";
-    cin>>c.edad;
+
+    do {
+        cout<<"\033[36mIngrese edad: \033[0m";
+        cin>>c.edad;
+        if (c.edad < 18){
+            cout << "\033[31mError: Debe tener al menos 18 años para registrarse.\033[0m\n";
+        }
+    } while(c.edad < 18);
     cin.ignore();
     do {
         cout<<"\033[36mIngrese contrasena (4-10 max.): \033[0m";    
