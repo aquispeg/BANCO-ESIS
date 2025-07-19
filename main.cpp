@@ -2,6 +2,7 @@
 #include <ctime>
 #include "cliente.h"
 #include "cuenta.h"
+#include "operaciones.h"
 
 using namespace std;
 
@@ -27,6 +28,13 @@ int main (){
         cout<<"\033[34m======================================\n";
         cout<<"\033[36mElige una opcion: \033[0m"; cin>>op;
         cin.ignore();
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "\033[31mEntrada inválida. Por favor, ingrese un número.\033[0m\n";
+            continue;
+        }
 
         switch (op) {
             case 1: {
@@ -96,8 +104,15 @@ int main (){
                         cout<<" 6. Mostrar perfil\n";
                         cout<<" 7. Mostrar historial\n";
                         cout<<" 0. Cerrar sesion\n";
-                        cout<<"\033[34m================================\n";
+                        cout<<"\033[34m==============================\n";
                         cout<<"\033[36mElige una opcion: \033[0m"; cin>>subop;
+
+                        if (cin.fail()) {
+                            cin.clear();
+                            cin.ignore(10000, '\n');
+                            cout << "\033[31mEntrada inválida. Por favor, ingrese un número.\033[0m\n";
+                            continue;
+                        }
 
                         int index;
                         switch(subop){
@@ -173,7 +188,6 @@ int main (){
 
                             default:
                                 cout << "\033[31mError: Opcion no valida\033[0m\n";
-                                system("pause");
                                 break;
                         }
                         system("pause");

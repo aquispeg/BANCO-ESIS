@@ -2,12 +2,19 @@
 #include <string>
 #include <ctime>
 #include "cuenta.h"
+#include "operaciones.h"
 
 using namespace std;
 
 void depositar (cuenta &cuenta) {
     float monto;
     cout<<"\n\033[36mIngrese el monto a depositar (Max. 1000): \033[0m"; cin >> monto;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\033[31mError: Ingrese un monto numerico valido.\033[0m\n";
+        return;
+    }
     cin.ignore();
     if (monto > 0 && monto <= 1000) {
         cuenta.saldo += monto;
@@ -28,6 +35,13 @@ void depositar (cuenta &cuenta) {
 void retirar (cuenta &cuenta) {
     float monto;
     cout<<"\n\033[36mIngrese el monto a retirar: \033[0m"; cin>>monto;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\033[31mError: Ingrese un monto numerico valido.\033[0m\n";
+        return;
+    }
+    cin.ignore();
     if (monto <= 0) {
         cout<<"\033[31mError: Monto invalido.\033[0m"<<endl;
     } 
