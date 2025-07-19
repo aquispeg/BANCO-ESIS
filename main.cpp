@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "cliente.h"
 #include "cuenta.h"
 
@@ -14,6 +15,7 @@ int main (){
     string contraIngresada,dniBuscado,numeroCuenta;
     bool cuentaCreada=false;
     bool encontrado;
+    srand(time(0));
 
     do{
         system("cls");

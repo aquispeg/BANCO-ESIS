@@ -8,10 +8,22 @@
 using namespace std;
 
 void crearc_bancaria(cuenta cuentas[], int &totCuentas, string DNI) {
-    srand(time(0));
-    int nrandom=(rand()%9000)+1000;
-    string ncuenta="5400-1234-5678-";
-    ncuenta+=to_string(nrandom);
+    bool repetido;
+    string ncuenta;
+    do {
+        repetido = false;
+        int nrandom=(rand()%9000)+1000;
+        ncuenta="5400-1234-5678-";
+        ncuenta+=to_string(nrandom);
+
+        for (int i = 0; i < totCuentas; i++) {
+            if (cuentas[i].ncuenta == ncuenta){
+                repetido = true;
+                break;
+            }
+        }
+    } while (repetido);
+
     cuentas[totCuentas].DNI = DNI;
     cuentas[totCuentas].ncuenta=ncuenta;
     cuentas[totCuentas].saldo = 0;
@@ -27,9 +39,9 @@ int inom;
     strftime(horayfecha, 80, "%d/%m/%Y %H:%M:%S", localtime(&tiempo));
 
     for(int i=0;i<totCuentas;i++){
-    if(clientes[i].DNI==DNI){
-        inom=i;
-    }
+        if(clientes[i].DNI==DNI){
+            inom=i;
+        }
     }
 
     cout<<"\033[34m\n----------------------------------------------------------------------\033[0m"<<endl;
